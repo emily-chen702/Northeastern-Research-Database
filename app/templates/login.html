@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        /* The alert message box */
+        .alert {
+            padding: 20px;
+            background-color: rgb(56, 87, 117);
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        /* The close button */
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* When moving the mouse over the close button */
+        .closebtn:hover {
+            color: black;
+        }
+
+        .middle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .image {
+            background-image: url('/static/krentzman.jpg');
+            height: 100%;
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.75;
+            filter: brightness(65%);
+        }
+
+        .padding {
+            padding: 30px 12px;
+        }
+
+        .background {
+            background-color: rgb(255, 255, 255, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="middle image">
+    </div>
+    <!-- {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li<{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %} -->
+    <div class="middle padding background">
+        <h1>Login</h1>
+
+
+
+        <form action="" method="post">
+            <dl>
+                <dt>Username:</dt>
+                <dd>
+                    <input type="text" name="username" value="{{ request.form.username }}">
+                </dd>
+            </dl>
+            <p><input type="submit" value="Login"></p>
+        </form>
+        <br>
+        <p><a href="{{ url_for('index') }}"><button>Back to main page</button></a></p>
+
+        {% if error %}
+
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Error:</strong> {{ error }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
